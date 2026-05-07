@@ -1,3 +1,4 @@
+/// <reference types="node" />
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -27,6 +28,7 @@ export default defineConfig({
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
+    baseURL: 'https://automationintesting.online',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -34,19 +36,46 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    // API (no browser needed)
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'API',
+      testDir: './tests/api',
     },
 
+    // UI - Chromium
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: 'UI-Chromium',
+      testDir: './tests/ui',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
 
+    // UI - Firefox
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: 'UI-Firefox',
+      testDir: './tests/ui',
+      use: {
+        ...devices['Desktop Firefox'],
+      },
+    },
+
+    // UI - WebKit (Safari)
+    {
+      name: 'UI-WebKit',
+      testDir: './tests/ui',
+      use: {
+        ...devices['Desktop Safari'],
+      },
+    },
+
+    // Integration (1 browser)
+    {
+      name: 'Integration-Chromium',
+      testDir: './tests/integration',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
 
     /* Test against mobile viewports. */

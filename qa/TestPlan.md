@@ -9,5 +9,12 @@ Project Information:
 Test Plan:
 1. [x] Read through API documentation
 2. [x] Run an exploratory test through the main page and make any notes
-3. [x] Create the test cases for Golden Path/Happy Path
-4. [x] Install Playwright + TypeScript
+3. [x] Setup: Install Playwright + TypeScript
+4. [x] Create the test cases for Golden Path/Happy Path
+5. [x] Define User Journeys (UJ) risks and priorities: P0 to P3
+6. [ ] Plan the suites based on User Journeys created: smoke, e2e, regression passes
+    smoke - critical, fast checks
+    e2e - full user journey
+    regression - full coverage
+    integration - UI + API validation
+
